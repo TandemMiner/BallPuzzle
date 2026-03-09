@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BatMovementTesting : MonoBehaviour
 {
@@ -35,5 +36,8 @@ public class BatMovementTesting : MonoBehaviour
             inputDirection = Vector2.zero;
             this.transform.position = spawnPosition;
         }
+
+        if (collision.gameObject.name == "ConductorStorage")
+        { SceneManager.LoadScene(""); }
     }
 }
