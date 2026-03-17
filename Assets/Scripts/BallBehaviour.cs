@@ -7,6 +7,8 @@ public class BatMovementTesting : MonoBehaviour
     Vector2 inputDirection;
     Rigidbody2D rb;
     public float speed = 500f;
+    private AudioSource audioSource;
+    public AudioClip collisionSound;
     Vector2 spawnPosition;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -14,6 +16,7 @@ public class BatMovementTesting : MonoBehaviour
         //Gets the Rigidbody2D component attached to the bat
         rb = GetComponent<Rigidbody2D>();
         spawnPosition = new Vector2(-8, -4);
+        audioSource = GetComponent<AudioSource>();
     }
 
     //The input direction is updated based on input from the player
@@ -35,6 +38,7 @@ public class BatMovementTesting : MonoBehaviour
         {
             inputDirection = Vector2.zero;
             this.transform.position = spawnPosition;
+            audioSource.PlayOneShot(collisionSound);
         }
 
         if (collision.gameObject.name == "ConductorStorage")
